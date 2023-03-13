@@ -1,12 +1,11 @@
 import React from 'react';
 
-const HeaderBar = (props) => {
+const Skill = (props) => {
     return (
         <div>
-            HeaderBar
+            Skill
         </div>
-
     );
 };
 
-export default HeaderBar;
+export default Skill;
