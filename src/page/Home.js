@@ -5,9 +5,9 @@ import Skill from './Skill';
 import Project from './Project';
 import Contact from './Contact';
 
-const Home = () => {
+const Home = (props) => {
     return (
-    <>
+    <div>
     <Header /> 
     <FullPage duration={1000}>
       <Slide>
@@ -23,7 +23,7 @@ const Home = () => {
         <Contact />
       </Slide>
     </FullPage>
-    </>
+    </div>
     )
   };
   

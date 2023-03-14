@@ -1,7 +1,7 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Nanum+Gothic:wght@400;800&family=Titillium+Web:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+KR:wght@300;400;500;700&family=Titillium+Web:wght@400;600;700;900&family=Inter:wght@300;400;500&display=swap');
 
-html,body{width:100%;height:100%;}
+html,body{width:100%;height:100%; background: #f9f9f9;}
 *{box-sizing: border-box; margin: 0; padding: 0;}
 
 /* 여백 초기화 */
@@ -29,7 +29,7 @@ img,fieldset {border:0 none;}
 button {outline: none; border: none;}
 
 /* 반응형 */
-video,img {width: 100%;}
+/* video,img {width: 100%;} */
 
 /* clearfix */
 .cf{*zoom:1;}

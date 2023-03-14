@@ -4,7 +4,6 @@ import '../component/style/Start.scss';
 import { Link } from 'react-router-dom';
 
 const Start = () => {
-    console.clear();
     const randomX = random(-700, 700);
     const randomY = random(-500, 500);
     const randomDelay = random(0, 50);

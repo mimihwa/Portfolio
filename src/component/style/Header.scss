@@ -1,0 +1,52 @@
+.header{
+    z-index: 999;
+    background: #f9f9f9;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 80px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    nav{
+        ul{
+            justify-content: right;
+            display: flex;
+            li{
+                font-weight: 700;
+                font-family: 'Titillium Web', sans-serif;
+                font-size: 20px;
+                display: flex;
+                padding: 0 20px;
+                color: #222;
+                position: relative;
+                transition: .5s;
+                cursor: pointer;
+                mark{
+                    background: 0;
+                    &:hover{
+                        --color1: rgb(255, 179, 0);
+                        --color2: rgb(255, 179, 0);
+                    --bg-height: 40%;
+                    all: unset;
+                    background-image: linear-gradient(var(--color1), var(--color2));
+                    background-position: 0 100%;
+                    background-repeat: no-repeat;
+                    background-size: 0 var(--bg-height);
+                    animation: highlight 500ms 1 ease-out;
+                    animation-fill-mode: forwards;
+                    }
+                    
+                }
+                
+            }
+        }
+    }   
+}
+
+@keyframes highlight {
+    to {
+      background-size: 100% var(--bg-height);
+    }
+  }
