@@ -7,26 +7,27 @@
         font-family: 'Titillium Web', sans-serif;
         flex-basis: 30%;
         .intro{
-            line-height: 55px;
-            font-weight: 700;
+            
             h2{
-                font-size: 47px;
+                font-size: 46px;
+                font-weight: 600;
+                line-height: 55px;
             }
             span{
+                font-size: 70px;
+                font-weight: 700;
                 line-height: 80px;
-                font-size: 80px;
                 p{
                     display: inline;
-                    font-size: 60px;
+                    font-size: 55px;
                 }
             }
         }
-        img{
+        .face{
             border: 1px solid #bbb;
             margin-top: 50px;
             width: 415px;
             height: 480px;
-
         }
     }
     .textProfile{
@@ -61,7 +62,7 @@
             display: flex;
             h4{
                 flex-basis: 18%;
-                font-size: 24px;
+                font-size: 20px;
                 font-weight: 700;
                 font-family: 'Titillium Web', sans-serif;
                 line-height: 25px;

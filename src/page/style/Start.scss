@@ -23,19 +23,19 @@
             border-radius: 100%;
             filter: blur(var(--blur-amount));
             &.big{
-                background-color: rgba(255, 218, 116, 0.5);
+                background-color: rgba(255, 204, 0, 0.3);
                 height: var(--blur-1-size);
                 width: calc(var(--blur-1-size) * 0.9);
             }
             &.middle{
-                background-color: rgba(255, 144, 144, 0.5);
+                background-color: rgba(255, 0, 0, 0.3);
                 height: calc(var(--blur-2-size)* 1.1);
                 width: var(--blur-2-size);
                 top: 30vh;
                 right: 10vh;
             }
             &.small{
-                background-color:rgba(191, 255, 145, 0.5);
+                background-color:rgba(106, 255, 0, 0.3);
                 height: var(--blur-3-size);
                 width: calc(var(--blur-3-size) * 0.9);
                 bottom: 20vh;

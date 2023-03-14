@@ -1,6 +1,6 @@
 import React from 'react';
 import { gsap, Sine } from "gsap";
-import '../component/style/Start.scss';
+import './style/Start.scss';
 import { Link } from 'react-router-dom';
 
 const Start = () => {

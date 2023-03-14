@@ -1,6 +1,6 @@
 import React from 'react';
-import '../component/style/About.scss';
-import Header from './Header'
+import './style/About.scss';
+import Header from '../component/Header'
 
 const About = (props) => {
     return (
@@ -11,8 +11,8 @@ const About = (props) => {
                     <h2>Hello, I'm a<br />
                     Front-end Developer</h2>
                     <span>Mihwa<p>🍀</p></span>
-                </div>
-                <img src="./img/face.png" alt="img" />
+                </div> 
+                <img className='face' src="./img/face.png" alt="img" />
             </div>
             <div className="textProfile">
                 <div className="edu infoWrap">
