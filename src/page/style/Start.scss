@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 :root {
     --blur-1-size: clamp(400px, 50vw, 50vw);
     --blur-2-size: clamp(300px, 50vw, 45vw);
@@ -31,14 +33,12 @@
                 background-color: rgba(255, 0, 0, 0.3);
                 height: calc(var(--blur-2-size)* 1.1);
                 width: var(--blur-2-size);
-                top: 30vh;
-                right: 10vh;
+                right: 3vw;
             }
             &.small{
                 background-color:rgba(106, 255, 0, 0.3);
                 height: var(--blur-3-size);
                 width: calc(var(--blur-3-size) * 0.9);
-                bottom: 20vh;
                 left: 5vw;
             }
         }
@@ -54,27 +54,26 @@
         font-family: 'Titillium Web', sans-serif;
         h1{
             text-align: center;
-            font-size: 55px;
+            font-size: 3.3vw;
             font-weight: 700;
-            line-height: 80px;
-            margin-bottom: 70px;
+            line-height: 142%;
+            margin-bottom: 4.1vw;
             span{
                 display: block;
-                font-size: 90px;
+                font-size: 5.4vw;
                 font-weight: 900;
             }
         }
         button{
+            background: none;
             display: block;
             font-family: 'Titillium Web', sans-serif;
             font-weight: 700;
             margin: 0 auto;
-            font-size: 28px;
-            background: none;
+            font-size: 1.7vw;
             transition: .3s ;
-            cursor: pointer;
             &:hover{
-                letter-spacing: 6px;
+                letter-spacing: .35vw;
             }
     
         }

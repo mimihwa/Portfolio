@@ -1,29 +1,41 @@
 import React from 'react';
 import { gsap, Sine } from "gsap";
-import './style/Start.scss';
 import { Link } from 'react-router-dom';
+import './style/Start.scss';
 
 const Start = () => {
-    const randomX = random(-700, 700);
-    const randomY = random(-500, 500);
+    let randomX = random(-700, 700);
+    let randomY = random(-500, 500);
     const randomDelay = random(0, 50);
     const randomTime = random(6, 12);
     const randomTime2 = random(5, 6);
     const randomAngle = random(-30, 150);
  
-    const blurs = gsap.utils.toArray(".blur");
-    blurs.forEach((blur) => {
-        gsap.set(blur, {
-            x: randomX(-1),
-            y: randomX(1),
-            repeat: -1,
-            instantRender: false,
-            rotation: randomAngle(-1)
+    
+    if(window.innerWidth < 700){
+        randomX=  random(-600, 600);
+        randomY = random(-700, 700);
+    }
+    
+    move();
+    function move(){
+        const blurs = gsap.utils.toArray(".blur");
+        blurs.forEach((blur) => {
+            gsap.set(blur, {
+                x: randomX(-1),
+                y: randomX(1),
+                repeat: -1,
+                instantRender: false,
+                rotation: randomAngle(-1)
+            });
+            moveX(blur, 1);
+            moveY(blur, -1);
+            rotate(blur, 1);
         });
-        moveX(blur, 1);
-        moveY(blur, -1);
-        rotate(blur, 1);
-    });
+
+        
+    }
+    
     
     function rotate(target, direction) {
         gsap.to(target, randomTime2(), {

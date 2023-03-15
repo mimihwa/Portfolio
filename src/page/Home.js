@@ -1,5 +1,5 @@
 import React from 'react';
-import {FullPage,Slide} from "https://cdn.skypack.dev/react-full-page@0.1.12";
+import {FullPage, Slide} from "react-full-page";
 import About from './About';
 import Skill from './Skill';
 import Project from './Project';

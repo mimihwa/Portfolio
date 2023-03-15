@@ -5,41 +5,55 @@
     position: fixed;
     top: 0;
     left: 0;
-    padding: 25px 80px;
+    padding: 1.6vw 5vw;
     display: flex;
     justify-content: right;
     align-items: center;
-        li{
-            font-weight: 700;
-            font-family: 'Titillium Web', sans-serif;
-            font-size: 20px;
-            display: flex;
-            padding: 0 20px;
-            color: #222;
-            position: relative;
-            transition: .5s;
-            cursor: pointer;
-            mark{
-                background: 0;
-                &:hover{
-                    --color1: rgb(119, 231, 0);
-                    --color2: rgb(119, 231, 0);
-                --bg-height: 40%;
-                all: unset;
-                background-image: linear-gradient(var(--color1), var(--color2));
-                background-position: 0 100%;
-                background-repeat: no-repeat;
-                background-size: 0 var(--bg-height);
-                animation: highlight 500ms 1 ease-out;
-                animation-fill-mode: forwards;
-                }
-                
+    li{
+        font-weight: 700;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 1.4vw;
+        display: flex;
+        padding: 0 20px;
+        color: #222;
+        position: relative;
+        transition: .5s;
+        cursor: pointer;
+        mark{
+            background: 0;
+            &:hover{
+                --color1: rgb(119, 231, 0);
+                --color2: rgb(119, 231, 0);
+            --bg-height: 40%;
+            all: unset;
+            background-image: linear-gradient(var(--color1), var(--color2));
+            background-position: 0 100%;
+            background-repeat: no-repeat;
+            background-size: 0 var(--bg-height);
+            animation: highlight 500ms 1 ease-out;
+            animation-fill-mode: forwards;
             }
-            
         }
     }
+}
 @keyframes highlight {
     to {
       background-size: 100% var(--bg-height);
     }
-  }
+}
+@media screen and (max-width: 1200px) {
+    #header{
+        li{
+            font-size: 2vw;
+        }
+    }
+}
+@media screen and (max-width: 780px) {
+    #header{
+        justify-content: center;
+        li{
+            font-size: 2.5vw;
+            padding: 0 30px;
+        }
+    }
+}

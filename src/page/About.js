@@ -8,9 +8,38 @@ const About = (props) => {
             <Header/>
             <div className='profile'>
                 <div className="intro">
-                    <h2>Hello, I'm a<br />
-                    Front-end Developer</h2>
-                    <span>Mihwa<p>🍀</p></span>
+                    <h2>
+                        <span>H</span>
+                        <span>e</span>
+                        <span>l</span>
+                        <span>l</span>
+                        <span>o</span>
+                        <span>,</span>
+                        <span>&nbsp;I</span>
+                        <span>'</span>
+                        <span>m</span>
+                        <span>&nbsp;a</span>
+                        <br />
+                        <span>F</span>
+                        <span>r</span>
+                        <span>o</span>
+                        <span>n</span>
+                        <span>t</span>
+                        <span>-</span>
+                        <span>e</span>
+                        <span>n</span>
+                        <span>d</span>
+                        <span>&nbsp;D</span>
+                        <span>e</span>
+                        <span>v</span>
+                        <span>e</span>
+                        <span>l</span>
+                        <span>o</span>
+                        <span>p</span>
+                        <span>e</span>
+                        <span>r</span>
+                    </h2>
+                    <span className='name'>Mihwa<p>🍀</p></span>
                 </div> 
                 <img className='face' src="./img/face.png" alt="img" />
             </div>
@@ -22,9 +51,13 @@ const About = (props) => {
                             프론트엔드 개발 양성 과정 수료
                             <p>2022.10~2023.03</p>
                         </li>
-                        <li>
+                        <li className='Re780D'>
                             홍익대학교<br />
                             커뮤니케이션디자인과 학사
+                            <p>2015.03~2020.02</p>
+                        </li>
+                        <li className='Re780B'>
+                            홍익대학교 커뮤니케이션디자인과 학사
                             <p>2015.03~2020.02</p>
                         </li>
                         <li>
@@ -49,7 +82,8 @@ const About = (props) => {
                     </ul>
                 </div>
                 <div className="work infoWrap">
-                    <h4>
+                    <h4 className='Re1200B'>WORK EXPIRENCE</h4>
+                    <h4 className='Re1200D'>
                         WORK<br />
                         EXPIRENCE
                     </h4>
