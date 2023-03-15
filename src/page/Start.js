@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { gsap, Sine } from "gsap";
 import { Link } from 'react-router-dom';
 import './style/Start.scss';
 
-const Start = () => {
+export default function Start(){
     let randomX = random(-700, 700);
     let randomY = random(-500, 500);
     const randomDelay = random(0, 50);
@@ -17,14 +17,16 @@ const Start = () => {
         randomY = random(-700, 700);
     }
     
-    move();
+    
     function move(){
         const blurs = gsap.utils.toArray(".blur");
+        // const blurs = document.querySelectorAll(".blur");
+
         blurs.forEach((blur) => {
             gsap.set(blur, {
                 x: randomX(-1),
                 y: randomX(1),
-                repeat: -1,
+                repeat: 10,
                 instantRender: false,
                 rotation: randomAngle(-1)
             });
@@ -32,10 +34,12 @@ const Start = () => {
             moveY(blur, -1);
             rotate(blur, 1);
         });
-
-        
     }
+
     
+    useEffect(() => {
+        move();
+    }, []);
     
     function rotate(target, direction) {
         gsap.to(target, randomTime2(), {
@@ -70,21 +74,18 @@ const Start = () => {
         return (direction = 1) => (min + delta * Math.random()) * direction;
     }
     
-
-    
     return (
-            <div id='start'>
-                <div className='blurWrap'>
-                    <div className="blur big"></div>
-                    <div className="blur middle"></div>
-                    <div className="blur small"></div>
-                </div>
-                <div className='title'>
-                    <h1>Welcome to the<span>MIHWA WORLD</span></h1>
-                    <Link to='/Home'><button>ENTER</button></Link>
-                </div >
+        <div id='start'>
+            <div className='blurWrap'>
+                <div className="blur big"></div>
+                <div className="blur middle"></div>
+                <div className="blur small"></div>
             </div>
+            <div className='title'>
+                <h1>Welcome to the<span>MIHWA WORLD</span></h1>
+                <Link to='/Home'><button>ENTER</button></Link>
+            </div >
+        </div>
     );
 };
 
-export default Start;
