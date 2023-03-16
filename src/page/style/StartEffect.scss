@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+:root {
+    --blur-1-size: clamp(400px, 50vw, 50vw);
+    --blur-2-size: clamp(300px, 50vw, 45vw);
+    --blur-3-size: clamp(300px, 45vw, 45vw);
+    --blur-amount: clamp(40px, 5vw, 90px);
+}
+#start{
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    .blurWrap{
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        padding: 2vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+        .blur {
+            position: absolute;
+            border-radius: 100%;
+            filter: blur(var(--blur-amount));
+            &.big{
+                background-color: rgba(255, 204, 0, 0.3);
+                height: var(--blur-1-size);
+                width: calc(var(--blur-1-size) * 0.9);
+            }
+            &.middle{
+                background-color: rgba(255, 0, 0, 0.3);
+                height: calc(var(--blur-2-size)* 1.1);
+                width: var(--blur-2-size);
+                right: 3vw;
+            }
+            &.small{
+                background-color:rgba(106, 255, 0, 0.3);
+                height: var(--blur-3-size);
+                width: calc(var(--blur-3-size) * 0.9);
+                left: 5vw;
+            }
+        }
+    }
+    .title{
+        color: #222;
+        z-index: 1;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        font-family: 'Titillium Web', sans-serif;
+        h1{
+            text-align: center;
+            font-size: 3.3vw;
+            font-weight: 700;
+            line-height: 142%;
+            margin-bottom: 4.1vw;
+            span{
+                display: block;
+                font-size: 5.4vw;
+                font-weight: 900;
+            }
+        }
+        button{
+            background: none;
+            display: block;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 700;
+            margin: 0 auto;
+            font-size: 1.7vw;
+            transition: .3s ;
+            &:hover{
+                letter-spacing: .35vw;
+            }
+    
+        }
+    
+    }
+    
+}

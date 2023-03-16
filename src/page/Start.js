@@ -1,91 +1,198 @@
-import React, { useEffect } from 'react';
-import { gsap, Sine } from "gsap";
+import React/* , {useState, useEffect,useRef}  */from "react";
 import { Link } from 'react-router-dom';
 import './style/Start.scss';
 
-export default function Start(){
-    let randomX = random(-700, 700);
-    let randomY = random(-500, 500);
-    const randomDelay = random(0, 50);
-    const randomTime = random(6, 12);
-    const randomTime2 = random(5, 6);
-    const randomAngle = random(-30, 150);
- 
+export default function Test(){
     
-    if(window.innerWidth < 700){
-        randomX=  random(-600, 600);
-        randomY = random(-700, 700);
+    
+    const canvas = document.createElement("canvas");
+    
+    document.body.appendChild(canvas);
+    
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    if(window.innerWidth>1200){
+        width = canvas.width = window.innerWidth * 0.7;
+        height = canvas.height = window.innerHeight * 0.7;
+    }else if(window.innerWidth<1200){
+        width = canvas.width = window.innerWidth * 0.9;
+        height = canvas.height = window.innerHeight * 0.9;
+    }else if(window.innerWidth<1000){
+        width = canvas.width = window.innerWidth * 1.1;
+        height = canvas.height = window.innerHeight * 1.1;
+    }else if(window.innerWidth<800){
+        width = canvas.width = window.innerWidth * 1.4;
+        height = canvas.height = window.innerHeight * 1.4;
+    }
+    else if(window.innerWidth<600){
+        width = canvas.width = window.innerWidth * 1.8;
+        height = canvas.height = window.innerHeight * 1.8;
+    }else{
+        width = canvas.width = window.innerWidth * 2.1;
+        height = canvas.height = window.innerHeight * 2.1;
     }
     
-    
-    function move(){
-        const blurs = gsap.utils.toArray(".blur");
-        // const blurs = document.querySelectorAll(".blur");
 
-        blurs.forEach((blur) => {
-            gsap.set(blur, {
-                x: randomX(-1),
-                y: randomX(1),
-                repeat: 10,
-                instantRender: false,
-                rotation: randomAngle(-1)
-            });
-            moveX(blur, 1);
-            moveY(blur, -1);
-            rotate(blur, 1);
-        });
-    }
+    const gl = canvas.getContext('webgl');
+    var mouse = {x: 0, y: 0};
+    var numMetaballs = 30;
+    var metaballs = [];
 
-    
-    useEffect(() => {
-        move();
-    }, []);
-    
-    function rotate(target, direction) {
-        gsap.to(target, randomTime2(), {
-            rotation: randomAngle(direction),
-            delay: randomDelay(),
-            ease: Sine.easeInOut,
-            onComplete: rotate,
-            onCompleteParams: [target, direction * -1]
-        });
-    }
 
-    function moveX(target, direction) {
-        gsap.to(target, randomTime(), {
-            x: randomX(direction),
-            ease: Sine.easeInOut,
-            onComplete: moveX,
-            onCompleteParams: [target, direction * -1]
-        });
+    for (var i = 0; i < numMetaballs; i++) {
+    var radius = Math.random() * 60 + 10;
+    metaballs.push({
+        x: Math.random() * (width - 2 * radius) + radius,
+        y: Math.random() * (height - 2 * radius) + radius,
+        vx: (Math.random() - 0.5) * 3,
+        vy: (Math.random() - 0.5) * 3,
+        r: radius * 0.75
+    });
     }
 
-    function moveY(target, direction) {
-        gsap.to(target, randomTime(), {
-            y: randomY(direction),
-            ease: Sine.easeInOut,
-            onComplete: moveY,
-            onCompleteParams: [target, direction * -1]
-        });
+    var vertexShaderSrc = `
+        attribute vec2 position;
+
+        void main() {
+        // position specifies only x and y.
+        // We set z to be 0.0, and w to be 1.0
+        gl_Position = vec4(position, 0.0, 1.0);
+        }
+    `;
+
+    var fragmentShaderSrc = `
+        precision highp float;
+
+        const float WIDTH = ` + (width >> 0) + `.1;
+        const float HEIGHT = ` + (height >> 0) + `.1;
+
+        uniform vec3 metaballs[` + numMetaballs + `];
+
+        void main(){
+            float x = gl_FragCoord.x;
+            float y = gl_FragCoord.y;
+
+            float sum = 0.0;
+            for (int i = 0; i < ` + numMetaballs + `; i++) {
+            vec3 metaball = metaballs[i];
+            float dx = metaball.x - x;
+            float dy = metaball.y - y;
+            float radius = metaball.z;
+
+            sum += (radius * radius) / (dx * dx + dy * dy);
+        }
+
+        if (sum >= 0.99) {
+            gl_FragColor = vec4(mix(vec3(x / WIDTH, y / HEIGHT, 0.2), vec3(0.7, 0.05, 0.01), max(0.55, 0.2 - (sum - 0.0) * 100.0)), 0.4);
+            return;
+        }
+
+            gl_FragColor = vec4(0.98, 0.975, 0.975, 1.0); //background
+        }
+
+    `;
+
+    var vertexShader = compileShader(vertexShaderSrc, gl.VERTEX_SHADER);
+    var fragmentShader = compileShader(fragmentShaderSrc, gl.FRAGMENT_SHADER);
+
+    var program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+    gl.useProgram(program);
+
+    var vertexData = new Float32Array([
+    -1.0,  1.0, // top left
+    -1.0, -1.0, // bottom left
+    1.0,  1.0, // top right
+    1.0, -1.0, // bottom right
+    ]);
+    var vertexDataBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexDataBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
+
+    var positionHandle = getAttribLocation(program, 'position');
+    gl.enableVertexAttribArray(positionHandle);
+    gl.vertexAttribPointer(positionHandle,
+                        2, // position is a vec2
+                        gl.FLOAT, // each component is a float
+                        gl.FALSE, // don't normalize values
+                        2 * 4, // two 4 byte float components per vertex
+                        0 // offset into each span of vertex data
+                        );
+
+    var metaballsHandle = getUniformLocation(program, 'metaballs');
+
+    loop();
+    function loop() {
+        for (var i = 0; i < numMetaballs; i++) {
+            var metaball = metaballs[i];
+            metaball.x += metaball.vx;
+            metaball.y += metaball.vy;
+
+            if (metaball.x < metaball.r || metaball.x > width - metaball.r) metaball.vx *= -1;
+            if (metaball.y < metaball.r || metaball.y > height - metaball.r) metaball.vy *= -1;
+        }
+
+    var dataToSendToGPU = new Float32Array(3 * numMetaballs);
+
+    for (var i = 0; i < numMetaballs; i++) {
+        var baseIndex = 3 * i;
+        var mb = metaballs[i];
+        dataToSendToGPU[baseIndex + 0] = mb.x;
+        dataToSendToGPU[baseIndex + 1] = mb.y;
+        dataToSendToGPU[baseIndex + 2] = mb.r;
     }
 
-    function random(min, max) {
-        const delta = max - min;
-        return (direction = 1) => (min + delta * Math.random()) * direction;
-    }
+    gl.uniform3fv(metaballsHandle, dataToSendToGPU);
     
-    return (
-        <div id='start'>
-            <div className='blurWrap'>
-                <div className="blur big"></div>
-                <div className="blur middle"></div>
-                <div className="blur small"></div>
-            </div>
+    //Draw
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+    requestAnimationFrame(loop);
+    }
+
+    function compileShader(shaderSource, shaderType) {
+    var shader = gl.createShader(shaderType);
+    gl.shaderSource(shader, shaderSource);
+    gl.compileShader(shader);
+
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        throw "Shader compile failed with: " + gl.getShaderInfoLog(shader);
+    }
+
+    return shader;
+    }
+
+    function getUniformLocation(program, name) {
+    var uniformLocation = gl.getUniformLocation(program, name);
+    if (uniformLocation === -1) {
+        throw 'Can not find uniform ' + name + '.';
+    }
+    return uniformLocation;
+    }
+
+    function getAttribLocation(program, name) {
+    var attributeLocation = gl.getAttribLocation(program, name);
+    if (attributeLocation === -1) {
+        throw 'Can not find attribute ' + name + '.';
+    }
+    return attributeLocation;
+    }
+
+    canvas.onmousemove = function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    }
+
+
+    return(
+        <>
             <div className='title'>
                 <h1>Welcome to the<span>MIHWA WORLD</span></h1>
                 <Link to='/Home'><button>ENTER</button></Link>
             </div >
-        </div>
-    );
-};
-
+        </>
+    )
+}

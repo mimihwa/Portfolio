@@ -22,8 +22,8 @@
         mark{
             background: 0;
             &:hover{
-                --color1: rgb(119, 231, 0);
-                --color2: rgb(119, 231, 0);
+                --color1: #ffd75f;
+                --color2: #ffd75f;
             --bg-height: 40%;
             all: unset;
             background-image: linear-gradient(var(--color1), var(--color2));
