@@ -2,11 +2,7 @@ import React from 'react';
 import './style/Skill.scss';
 
 const Skill = (props) => {
-    const skill = ['html', 'css' ,'jquery'];
-    const src = `./img/skill${skill.length}.png`
-    for(let i=1; i <skill.length; i++){
-        let skill = i+1;
-    }
+    const skill = ['html', 'css' ,'jquery']
     
     
     return (
@@ -19,7 +15,7 @@ const Skill = (props) => {
                             return(
                                 <div className="skills image">
                         
-                                <img src={src} alt="skill1" />
+                                <img src="./img/skill1.png" alt="skill1" />
                                 <span>{skill[i]}</span>
                             </div>
                     
