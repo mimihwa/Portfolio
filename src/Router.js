@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Home from './page/Home.js';
+import About from './page/About.js';
+import Project from './page/Project.js';
 import Start from './page/Start.js';
-import Contact from './page/Contact.js';
+import Comment from './page/Comment.js';
 
 function Router() {
   return (
@@ -10,8 +11,9 @@ function Router() {
       <BrowserRouter>
         <Routes>
             <Route path="/" element={<Start />} />
-            <Route path="/Home" element={<Home />}/>
-            <Route path="/Contact" element={<Contact />}/>
+            <Route path="/About" element={<About />}/>
+            <Route path="/Project" element={<Project />}/>
+            <Route path="/Comment" element={<Comment />}/>
         </Routes>
       </BrowserRouter>
     </div>

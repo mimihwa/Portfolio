@@ -1,18 +1,16 @@
 import React from 'react';
 import './style/Header.scss';
-import {Link} from 'react-scroll';
 import {NavLink} from 'react-router-dom';
 
 const Header = (props) => {
-
     return (
-        <ul id="header">
+        <ul id='Header'>
             <li><NavLink to="/" ><mark>HOME</mark></NavLink></li>
-            <li><Link activeClass="active" className="test1" to="test1" spy={true} smooth={true} duration={500} ><mark>ABOUT</mark></Link></li>
-            <li><Link activeClass="active" className="test2" to="test2" spy={true} smooth={true} duration={500} ><mark>SKILL</mark></Link></li>
-            <li><Link activeClass="active" className="test3" to="test3" spy={true} smooth={true} duration={500} ><mark>PROJECT</mark></Link></li>
-            <li><Link activeClass="active" className="test4" to="test4" spy={true} smooth={true} duration={500} ><mark>CONTACT</mark></Link></li>
+            <li><NavLink to="/About" ><mark>ABOUT</mark></NavLink></li>
+            <li><NavLink to="/Project" ><mark>PROJECT</mark></NavLink></li>
+            <li><NavLink to="/Comment" ><mark>COMMENT</mark></NavLink></li>
         </ul>
+        
 
     );
 };

@@ -1,9 +1,8 @@
-import React from 'react';
+/* import React from 'react';
 import {FullPage, Slide} from "react-full-page";
 import About from './About';
-import Skill from './Skill';
 import Project from './Project';
-import Contact from './Contact';
+import Comment from './Comment';
 import {Element, Events, animateScroll as scroll,  scroller } from 'react-scroll'
 
 
@@ -75,17 +74,12 @@ class Home extends React.Component {
           </Slide>
           <Slide>
             <Element name="test2" className="element">
-              <Skill />
-            </Element>
-          </Slide>
-          <Slide>
-            <Element name="test3" className="element">
               <Project />
             </Element>
           </Slide>
           <Slide>
-            <Element name="test4" className="element">
-              <Contact />
+            <Element name="test3" className="element">
+              <Comment />
             </Element>
           </Slide>
         </FullPage>
@@ -94,3 +88,4 @@ class Home extends React.Component {
   }
 }
 export default Home;
+ */

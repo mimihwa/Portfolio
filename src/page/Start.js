@@ -3,12 +3,8 @@ import { Link } from 'react-router-dom';
 import './style/Start.scss';
 
 export default function Test(){
-    
-    
     const canvas = document.createElement("canvas");
-    
     document.body.appendChild(canvas);
-    
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
@@ -33,22 +29,20 @@ export default function Test(){
         height = canvas.height = window.innerHeight * 2.1;
     }
     
-
     const gl = canvas.getContext('webgl');
     var mouse = {x: 0, y: 0};
     var numMetaballs = 30;
     var metaballs = [];
 
-
     for (var i = 0; i < numMetaballs; i++) {
-    var radius = Math.random() * 60 + 10;
-    metaballs.push({
-        x: Math.random() * (width - 2 * radius) + radius,
-        y: Math.random() * (height - 2 * radius) + radius,
-        vx: (Math.random() - 0.5) * 3,
-        vy: (Math.random() - 0.5) * 3,
-        r: radius * 0.75
-    });
+        var radius = Math.random() * 60 + 10;
+        metaballs.push({
+            x: Math.random() * (width - 2 * radius) + radius,
+            y: Math.random() * (height - 2 * radius) + radius,
+            vx: (Math.random() - 0.5) * 3,
+            vy: (Math.random() - 0.5) * 3,
+            r: radius * 0.75
+        });
     }
 
     var vertexShaderSrc = `
@@ -186,12 +180,11 @@ export default function Test(){
     mouse.y = e.clientY;
     }
 
-
     return(
         <>
             <div className='title'>
                 <h1>Welcome to the<span>MIHWA WORLD</span></h1>
-                <Link to='/Home'><button>ENTER</button></Link>
+                <Link to='/About'><button>ENTER</button></Link>
             </div >
         </>
     )
