@@ -1,0 +1,94 @@
+#Resume{
+    margin: 0 6.9vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 130px;
+    padding: 3vw 5vw;
+    .infoWrap{
+        position: relative;
+        border-top: 1px solid #222;
+        padding-top: 1.5vw;
+        display: flex;
+        &::before{
+            content: "";
+            position: absolute;
+            border-radius: 100%;
+            left: 0;
+            top: -.2vw;
+            width: .3vw;
+            height: .3vw;
+            background: #222;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            border-radius: 100%;
+            top: -.2vw;
+            right: 0;
+            width: .3vw;
+            height: .3vw;
+            background: #222;
+        }
+        &.edu{margin-bottom: 3vw;}
+
+        h4{
+            flex-basis: 22%;
+            font-size: 1.8vw;
+            font-weight: 700;
+            font-family: 'Titillium Web', sans-serif;
+            line-height: 110%;
+            &.Re1200D{
+                display: block;
+            }
+            &.Re1200B{
+                display: none;
+            }
+        }
+        ul{
+            padding-left: 6%;
+            padding-left: 4%;
+            color: #444;
+            li{
+                
+                margin-bottom: .8vw;
+                &:last-child{margin-bottom:0}
+                font-size: 1.2vw;
+                line-height: 130%;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-weight: 500;
+                &.Re780D{
+                    display: block;
+                }
+                &.Re780B{
+                    display: none;
+                }
+                p{
+                    line-height: 188%;
+                    font-family: 'Noto Sans KR', sans-serif;
+                    font-weight: 300;
+                    font-size: 1vw;
+                    color: #888;
+                }
+            }
+            &.kr{
+                flex-basis: 38%;
+            }
+            &.en{
+                flex-basis: 45%;
+                li{
+                    font-weight: 600;
+                    font-family: 'Titillium Web', sans-serif;
+                }
+            }
+        }
+        
+    }
+}
+
+@keyframes anime_textup {
+    0%{top: 0;}
+    20%{top: -.7vw;}
+    40%{top: 0;}
+    100%{top: 0;}
+}

@@ -1,7 +1,7 @@
 #Skill{
     font-family: 'Titillium Web', sans-serif;
     background: var(--main-color);
-    padding: 8vw 10vw;
+    padding: 8vw 9vw;
     .wrap{
         h4{
             font-size: 1.8vw;
@@ -9,32 +9,31 @@
             margin-bottom: 1vw;
         }
         .box{
-            
-            
+            display: flex;
+            justify-content: space-between;
             background: rgba(255,255,255,.5);
-            padding: 1vw 5vw;
+            padding: 1vw 3vw;
             border-radius: 10px;
-            margin-bottom: 3vw;
-            &.skillBox{}
-            &.toolBox{
-                display: grid;
-                grid-column-start : 3;
-                grid-column-end : 5;
-            }
+            margin-bottom: 5vw;
             .rec{
                 position: relative;
                 &.skill{}
-                &.tool{}
+                &.tool{
+                    img{
+                        width: 8vw;
+                        height: 8vw;
+                    }
+                }
                 img{
-                    width: 8vw;
-                    height: 8vw;
+                    width: 8.5vw;
+                    height: 8.5vw;
                 }
                 span{
                     position: absolute;
-                    bottom: 2.2vw;
+                    bottom: 1.5vw;
                     left: 50%;
                     transform: translateX(-50%);
-                    font-size: 1vw;
+                    font-size: .9vw;
                     font-weight: 600;
                     text-align: center;
                     line-height: 100%;

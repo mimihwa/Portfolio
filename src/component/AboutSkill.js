@@ -22,7 +22,7 @@ const AboutSkill = (props) => {
             </div>
 
             <div className="toolWrap wrap">
-            <h4>My Skills</h4>
+            <h4>My Tools</h4>
                 <div className="toolBox box">
                     {
                         tools.map((tool, idx)=>(

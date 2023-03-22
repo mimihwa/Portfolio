@@ -8,7 +8,7 @@ import Comment from './page/Comment.js';
 function Router() {
   return (
     <div className="App">
-      <HashRouter>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <Routes>
             <Route path="/" element={<Start />} />
             <Route path="/About" element={<About />}/>
