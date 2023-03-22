@@ -1,16 +1,10 @@
-import React, { useRef } /* , {useState, useEffect,useRef}  */from "react";
+import React/* , {useState, useEffect,useRef}  */from "react";
 import { Link } from 'react-router-dom';
 import './style/Start.scss';
 
 export default function Test(){
-    
-    const start= useRef(null);
     const canvas = document.createElement("canvas");
-
-        start.current.appendChild(canvas);
-
-    
-    
+    document.body.appendChild(canvas);
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
@@ -187,13 +181,11 @@ export default function Test(){
     }
 
     return(
-        <main ref={start}>
+        <>
             <div className='title'>
                 <h1>Welcome to the<span>MIHWA WORLD</span></h1>
                 <Link to='/About'><button>ENTER</button></Link>
             </div >
-        </main>
-
-        
+        </>
     )
 }
