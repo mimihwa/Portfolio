@@ -1,35 +1,66 @@
-import React/* , {useState, useEffect,useRef}  */from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { Link } from 'react-router-dom';
 import './style/Start.scss';
 
 export default function Test(){
-    const canvas = document.createElement("canvas");
+      
+    /* const canvas = document.createElement("canvas");
     document.body.appendChild(canvas);
+
     let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    let height = canvas.height = window.innerHeight; */
+    
+    const canvas = useRef();
+    console.log(canvas);
+
+
+    const screenWidth = canvas.width = window.innerWidth
+    const screenHeight = canvas.height = window.innerHeight;
+    const [width, setWidth] = useState(screenWidth);
+    const [height, setHeight] = useState(screenHeight);
+
+    const handleResize = () => {
+        const newWidth = window.innerWidth
+        const newHeigh = window.innerHeight;
+
+        setWidth(newWidth);
+        setHeight(newHeigh);
+    };
+
+    useEffect(()=>{
+        window.addEventListener('resize', handleResize);
+        return(()=>{
+            window.removeEventListener('resize', handleResize);
+        })
+    })
+    
+
+    
 
     if(window.innerWidth>1200){
-        width = canvas.width = window.innerWidth * 0.7;
-        height = canvas.height = window.innerHeight * 0.7;
+        canvas.width = window.innerWidth * 0.7;
+        canvas.height = window.innerHeight * 0.7;
     }else if(window.innerWidth<1200){
-        width = canvas.width = window.innerWidth * 0.9;
-        height = canvas.height = window.innerHeight * 0.9;
+        canvas.width = window.innerWidth * 0.9;
+        canvas.height = window.innerHeight * 0.9;
     }else if(window.innerWidth<1000){
-        width = canvas.width = window.innerWidth * 1.1;
-        height = canvas.height = window.innerHeight * 1.1;
+        canvas.width = window.innerWidth * 1.1;
+        canvas.height = window.innerHeight * 1.1;
     }else if(window.innerWidth<800){
-        width = canvas.width = window.innerWidth * 1.4;
-        height = canvas.height = window.innerHeight * 1.4;
+        canvas.width = window.innerWidth * 1.4;
+        canvas.height = window.innerHeight * 1.4;
     }
     else if(window.innerWidth<600){
-        width = canvas.width = window.innerWidth * 1.8;
-        height = canvas.height = window.innerHeight * 1.8;
+        canvas.width = window.innerWidth * 1.8;
+        canvas.height = window.innerHeight * 1.8;
     }else{
-        width = canvas.width = window.innerWidth * 2.1;
-        height = canvas.height = window.innerHeight * 2.1;
+        canvas.width = window.innerWidth * 2.1;
+        canvas.height = window.innerHeight * 2.1;
     }
     
     const gl = canvas.getContext('webgl');
+    console.log(canvas.value);
+
     var mouse = {x: 0, y: 0};
     var numMetaballs = 30;
     var metaballs = [];
@@ -182,10 +213,12 @@ export default function Test(){
 
     return(
         <>
-            <div className='title'>
-                <h1>Welcome to the<span>MIHWA WORLD</span></h1>
-                <Link to='/About'><button>ENTER</button></Link>
-            </div >
+            <canvas ref={(ref) => (this.canvas = ref)} >
+                <div className='title'>
+                    <h1>Welcome to the<span>MIHWA WORLD</span></h1>
+                    <Link to='/About'><button>ENTER</button></Link>
+                </div >
+            </canvas >
         </>
     )
 }
